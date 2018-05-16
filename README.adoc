@@ -53,7 +53,7 @@ The strings management of `Swift` is one of the most painful feature ever:
 let string = "Substring API sucks!"
 let start = string.index(string.startIndex, offsetBy: 1)
 let end = string.index(string.startIndex, offsetBy: 6)
-let substring = string[start..<end]
+let substring = String(string[start..<end])
 ----
 
 No! Stop it!
@@ -62,8 +62,17 @@ Now with this tiny library called `{name}`, you can simplly do this:
 
 [source, swift]
 ----
-let substring = string[1..<6]
+let substring = string[1..<6].string
 ----
+
+Or this, if you prefer:
+
+[source, swift]
+----
+let substring = string.substring(in: 1..<6).string
+----
+
+Learn link:#usage[more].
 
 == 📋 Requirements
 
@@ -109,6 +118,7 @@ You are welcome to fork and submit pull requests.
 
 `{name}` is open-sourced software, licensed under the link:./LICENSE.md[`{license}`] license.
 
+[#usage]
 == 🔫 Usage
 
 [source, swift, subs="verbatim,attributes"]
