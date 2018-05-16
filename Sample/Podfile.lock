@@ -1,0 +1,16 @@
+PODS:
+  - Substring (1.0.0)
+
+DEPENDENCIES:
+  - Substring (from `../`)
+
+EXTERNAL SOURCES:
+  Substring:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Substring: 552fddefbef997dfb7936b0a053ebce450b09c97
+
+PODFILE CHECKSUM: bbb588e5cbc85ae0c3ee96089e39eb846c6ba58a
+
+COCOAPODS: 1.5.2
