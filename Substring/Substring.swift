@@ -11,7 +11,7 @@ import Foundation
 public extension String {
 
     // String[1]
-    public subscript(index: Int) -> Character? {
+    subscript(index: Int) -> Character? {
         guard !self.isEmpty, let stringIndex = self.index(startIndex, offsetBy: index, limitedBy: self.index(before: endIndex)) else { return nil }
         return self[stringIndex]
     }
@@ -22,7 +22,7 @@ public extension String {
     ///
     /// - Parameter index: a character's index
     /// - Returns: the character
-    public func substring(at index: Int) -> Character? {
+    func substring(at index: Int) -> Character? {
         return self[index]
     }
 }
@@ -30,7 +30,7 @@ public extension String {
 public extension String {
 
     // String[0..<1]
-    public subscript(range: Range<Int>) -> Substring? {
+    subscript(range: Range<Int>) -> Substring? {
         guard let left = indexOffset(by: range.lowerBound) else { return nil }
         guard let right = index(left, offsetBy: range.upperBound - range.lowerBound, 
                                 limitedBy: endIndex) else { return nil }
@@ -43,7 +43,7 @@ public extension String {
     ///
     /// - Parameter range: a range
     /// - Returns: the substring
-    public func substring(in range: Range<Int>) -> Substring? {
+    func substring(in range: Range<Int>) -> Substring? {
         return self[range]
     }
 }
@@ -51,7 +51,7 @@ public extension String {
 public extension String {
 
     // String[0...1]
-    public subscript(range: ClosedRange<Int>) -> Substring? {
+    subscript(range: ClosedRange<Int>) -> Substring? {
         if range.upperBound < 0 {
             guard abs(range.lowerBound) <= count else { return nil }
             return self[(count - abs(range.lowerBound))...]
@@ -67,7 +67,7 @@ public extension String {
     ///
     /// - Parameter range: a range
     /// - Returns: the substring
-    public func substring(in range: ClosedRange<Int>) -> Substring? {
+    func substring(in range: ClosedRange<Int>) -> Substring? {
         return self[range]
     }
 }
@@ -75,7 +75,7 @@ public extension String {
 public extension String {
 
     // String[..<1]
-    public subscript(value: PartialRangeUpTo<Int>) -> Substring? {
+    subscript(value: PartialRangeUpTo<Int>) -> Substring? {
         if value.upperBound < 0 {
             guard abs(value.upperBound) <= count else { return nil }
             return self[..<(count - abs(value.upperBound))]
@@ -90,7 +90,7 @@ public extension String {
     ///
     /// - Parameter range: a index
     /// - Returns: the substring
-    public func substring(before index: Int) -> Substring? {
+    func substring(before index: Int) -> Substring? {
         return self[..<index]
     }
 }
@@ -98,7 +98,7 @@ public extension String {
 public extension String {
 
     // String[...1]
-    public subscript(value: PartialRangeThrough<Int>) -> Substring? {
+    subscript(value: PartialRangeThrough<Int>) -> Substring? {
         guard let right = self.indexOffset(by: value.upperBound) else { return nil }
         return self[...right]
     }
@@ -109,7 +109,7 @@ public extension String {
     ///
     /// - Parameter range: a index
     /// - Returns: the substring
-    public func substring(to index: Int) -> Substring? {
+    func substring(to index: Int) -> Substring? {
         return self[...index]
     }
 }
@@ -117,7 +117,7 @@ public extension String {
 public extension String {
 
     // String[1...]
-    public subscript(value: PartialRangeFrom<Int>) -> Substring? {
+    subscript(value: PartialRangeFrom<Int>) -> Substring? {
         guard let left = self.indexOffset(by: value.lowerBound) else { return nil }
         return self[left...]
     }
@@ -128,7 +128,7 @@ public extension String {
     ///
     /// - Parameter range: a index
     /// - Returns: the substring
-    public func substring(from index: Int) -> Substring? {
+    func substring(from index: Int) -> Substring? {
         return self[index...]
     }
 }
@@ -136,7 +136,7 @@ public extension String {
 public extension String {
 
     // String["substring"]
-    public subscript(string: String) -> [Range<String.Index>] {
+    subscript(string: String) -> [Range<String.Index>] {
         var occurences = [Range<String.Index>]()
         var initialLeftBound = startIndex
         while initialLeftBound < endIndex {
@@ -153,7 +153,7 @@ public extension String {
     ///
     /// - Parameter range: a substring
     /// - Returns: the ranges
-    public func ranges(of string: String) -> [Range<String.Index>] {
+    func ranges(of string: String) -> [Range<String.Index>] {
         return self[string]
     }
 }
@@ -161,7 +161,7 @@ public extension String {
 public extension String {
 
     // String["begin"..."end"]
-    public subscript(range: ClosedRange<String>) -> [ClosedRange<String.Index>] {
+    subscript(range: ClosedRange<String>) -> [ClosedRange<String.Index>] {
         var occurences = [ClosedRange<String.Index>]()
         var initialLeftBound = startIndex
         while initialLeftBound < endIndex {
@@ -181,7 +181,7 @@ public extension String {
     ///   - start: a substring
     ///   - end: a substring
     /// - Returns: the ranges
-    public func ranges(between start: String, and end: String) -> [ClosedRange<String.Index>] {
+    func ranges(between start: String, and end: String) -> [ClosedRange<String.Index>] {
         return self[start...end]
     }
 }
@@ -189,7 +189,7 @@ public extension String {
 public extension String {
 
     // String["begin"..<"end"]
-    public subscript(range: Range<String>) -> [Range<String.Index>] {
+    subscript(range: Range<String>) -> [Range<String.Index>] {
         var occurences = [Range<String.Index>]()
         var initialLeftBound = startIndex
         while initialLeftBound < endIndex {
@@ -209,7 +209,7 @@ public extension String {
     ///   - start: a substring
     ///   - end: a substring
     /// - Returns: the ranges
-    public func ranges(from start: String, before end: String) -> [Range<String.Index>] {
+    func ranges(from start: String, before end: String) -> [Range<String.Index>] {
         return self[start..<end]
     }
 }
@@ -217,7 +217,7 @@ public extension String {
 public extension String {
 
     // String[Character("a")]
-    public subscript(character: Character) -> [String.Index] {
+    subscript(character: Character) -> [String.Index] {
         var occurences = [String.Index]()
         var initialLeftBound = startIndex
         while initialLeftBound < endIndex {
@@ -235,7 +235,7 @@ public extension String {
     /// - Parameters:
     ///   - character: a character
     /// - Returns: the indexes
-    public func indexes(of character: Character) -> [String.Index] {
+    func indexes(of character: Character) -> [String.Index] {
         return self[character]
     }
 }
@@ -243,7 +243,7 @@ public extension String {
 public extension String {
 
     // String["begin"...]
-    public subscript(range: PartialRangeFrom<String>) -> PartialRangeFrom<String.Index>? {
+    subscript(range: PartialRangeFrom<String>) -> PartialRangeFrom<String.Index>? {
         guard self.indexOffset(by: range.lowerBound.count) != nil else { return nil }
         guard let beginRange = self.range(of: range.lowerBound, options: [], range: startIndex..<endIndex, locale: nil) else { return nil }
         return beginRange.upperBound...
@@ -256,7 +256,7 @@ public extension String {
     /// - Parameters:
     ///   - string: a substring
     /// - Returns: the ranges
-    public func range(from string: String) -> PartialRangeFrom<String.Index>? {
+    func range(from string: String) -> PartialRangeFrom<String.Index>? {
         return self[string...]
     }
 }
@@ -264,7 +264,7 @@ public extension String {
 public extension String {
     
     // String[..."end"]
-    public subscript(range: PartialRangeThrough<String>) -> PartialRangeThrough<String.Index>? {
+    subscript(range: PartialRangeThrough<String>) -> PartialRangeThrough<String.Index>? {
         guard self.indexOffset(by: range.upperBound.count) != nil else { return nil }
         guard let endRange = self.range(of: range.upperBound, options: [], range: startIndex..<endIndex, locale: nil) else { return nil }
         return ...endRange.lowerBound
@@ -277,21 +277,21 @@ public extension String {
     /// - Parameters:
     ///   - string: a substring
     /// - Returns: the ranges
-    public func range(to string: String) -> PartialRangeThrough<String.Index>? {
+    func range(to string: String) -> PartialRangeThrough<String.Index>? {
         return self[...string]
     }
 }
 
 public extension Character {
     
-    public var string: String {
+    var string: String {
         return String(self)
     }
 }
 
 public extension Optional where Wrapped == Character {
     
-    public var string: String? {
+    var string: String? {
         guard let character = self else { return nil }
         return String(character)
     }
@@ -299,14 +299,14 @@ public extension Optional where Wrapped == Character {
 
 public extension Substring {
 
-    public var string: String {
+    var string: String {
         return String(self)
     }
 }
 
 public extension Optional where Wrapped == Substring {
 
-    public var string: String? {
+    var string: String? {
         guard let substring = self else { return nil }
         return String(substring)
     }

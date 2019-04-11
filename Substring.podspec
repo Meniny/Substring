@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name        = 'Substring'
   s.module_name = 'Substring'
-  s.version     = '1.0.0'
+  s.version     = '1.1.0'
   s.summary     = 'Substring without boilerplate code.'
 
   s.homepage    = 'https://github.com/Meniny/Substring'
@@ -18,8 +18,8 @@ Pod::Spec.new do |s|
   s.requires_arc        = true
   s.source              = { git: 'https://github.com/Meniny/Substring.git', tag: s.version.to_s }
   s.source_files        = 'Substring/**/*.swift'
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.1' }
-  s.swift_version       = '4.1'
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '5' }
+  s.swift_version       = '5'
   # s.documentation_url   = 'https://github.com/Meniny/Substring/docs'
 
   # s.dependency "Jsonify"

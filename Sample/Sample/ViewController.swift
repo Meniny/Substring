@@ -18,12 +18,12 @@ class ViewController: UIViewController {
         
         print(string)
         
-        print(string.substring(at: 1).string, string[1].string) // _
-        print(string.substring(to: 4).string, string[...4].string) // A_Exa
-        print(string.substring(from: 2).string, string[2...].string) // Example_String
-        print(string.substring(before: 5).string, string[..<5].string) // A_Exa
-        print(string.substring(in: 2...5).string, string[2...5].string) // Exam
-        print(string.substring(in: 2..<5).string, string[2..<5].string) // Exa
+        print(string.substring(at: 1).string as Any, string[1].string as Any) // _
+        print(string.substring(to: 4).string as Any, string[...4].string as Any) // A_Exa
+        print(string.substring(from: 2).string as Any, string[2...].string as Any) // Example_String
+        print(string.substring(before: 5).string as Any, string[..<5].string as Any) // A_Exa
+        print(string.substring(in: 2...5).string as Any, string[2...5].string as Any) // Exam
+        print(string.substring(in: 2..<5).string as Any, string[2..<5].string as Any) // Exa
         
         /*
          A_Example_String
